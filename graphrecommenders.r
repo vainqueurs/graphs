@@ -1,4 +1,5 @@
-
+library(igraph)
+library(data.table)
 COCITATION<-function(HASH=HASH,numbers=10, n=5){
 
 HASHM<-HASH[,c('Source.User','Dest.User')]
@@ -17,10 +18,7 @@ HASHM<-HASH[,c('Source.User','Dest.User')]
 		
 		#access a particular vertex
 		#print(V(g)[10])
-		#Vertex sequence:
-	
-
-
+		#Vertex sequence
 		#1#CALCULATE COCITATION
 		COCIT<-cocitation(g, v=V(g)[numbers])
 		sum(COCIT)
@@ -28,7 +26,6 @@ HASHM<-HASH[,c('Source.User','Dest.User')]
 		#which(COCIT==1) # will return the index 
 		#colnames(COCIT)[which(COCIT==1)] will return the cocited person
 			
-
 		#	MAX COCITED 
 		#	colnames(COCIT)[which(COCIT==max(COCIT))]
 		U<-COCIT[order(-COCIT)]
@@ -57,10 +54,10 @@ HASHM<-HASH[,c('Source.User','Dest.User')]
 		return(data.frame(cbind(colnames(COCIT)[which(COCIT==U)[1:n]],colnames(SIM)[which(SIM==Z)[1:n]])))
 		
 	}
-	COCITATION(HASH,n=2)
+COCITATION(HASH,n=2)
+
 
 LADAR<-function(HASH=HASH,numbers=10, n=5){
-
 HASHM<-HASH[,c('Source.User','Dest.User')]
 		HASHM<-unique(HASHM)
 		dim(HASHM)
@@ -77,10 +74,7 @@ HASHM<-HASH[,c('Source.User','Dest.User')]
 		
 		#access a particular vertex
 		#print(V(g)[10])
-		#Vertex sequence:
-		#[1] "kashief.x.abdurahman@jpmorgan.com"
-
-
+		#Vertex sequence
 		#1#CALCULATE COCITATION
 		COCIT<-similarity.invlogweighted(g,vids=V(g)[numbers])
 		sum(COCIT)
@@ -106,7 +100,7 @@ HASHM<-HASH[,c('Source.User','Dest.User')]
 		#[1] 21.76621
 		colnames(SIM)<-colnames(COCIT)
 		colnames(SIM)[which(SIM==max(SIM))]
-		#[1] "dineshbabu.jayaraman.thomsonreuters.com@reuters.net"	
+	
 		# PICKING UP ALL THE RECOM
 		Z<-SIM[order(-SIM)]
 		colnames(SIM)[which(SIM==Z)[1:5]]
