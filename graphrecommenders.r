@@ -42,8 +42,7 @@ HASHM<-HASH[,c('Source.User','Dest.User')]
 		max(SIM)
 		#[1] 21.76621
 		colnames(SIM)<-colnames(COCIT)
-		colnames(SIM)[which(SIM==max(SIM))]
-		#[1] "dineshbabu.jayaraman.thomsonreuters.com@reuters.net"	
+		colnames(SIM)[which(SIM==max(SIM))]	
 		# PICKING UP ALL THE RECOM
 		Z<-SIM[order(-SIM)]
 		#print(colnames(SIM)[which(SIM==Z)[1:n]])
@@ -81,8 +80,7 @@ HASHM<-HASH[,c('Source.User','Dest.User')]
 		#WHICH COCIT ?
 		#which(COCIT==1) # will return the index 
 		#colnames(COCIT)[which(COCIT==1)] will return the cocited person
-			
-
+		
 		#	MAX COCITED 
 		#	colnames(COCIT)[which(COCIT==max(COCIT))]
 		U<-COCIT[order(-COCIT)]
